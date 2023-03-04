@@ -1,0 +1,13 @@
+<ul>
+    <a href="{{ item.item.get_url }}">{{ item.item.title }}</a>
+    {% if item.children and item.is_active %}
+        <ul>
+
+            {% for child in item.children %}
+                {% with item=child template_name='node.html'%}
+                    {% include template_name %}
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</ul>
